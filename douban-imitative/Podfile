@@ -1,0 +1,4 @@
+platform :ios, '7.0'
+target 'douban-imitative' do
+pod 'Masonry'
+end
