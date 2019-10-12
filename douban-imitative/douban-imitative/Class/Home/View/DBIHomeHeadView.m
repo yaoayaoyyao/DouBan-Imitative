@@ -49,7 +49,7 @@
         make.top.equalTo(self).offset(30);
         make.left.equalTo(self).offset(10);
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width - 20));
-        make.height.equalTo(@(40));
+        make.height.equalTo(@(35));
     }];
     _homeHeadTextField.backgroundColor = [UIColor colorWithRed:0.96f green:0.96f blue:0.96f alpha:1.00f];
     _homeHeadTextField.borderStyle = UITextBorderStyleRoundedRect;
@@ -67,10 +67,7 @@
     //左边搜索图标的模式
     leftImageView.contentMode = UIViewContentModeCenter;
     _homeHeadTextField.leftView = leftImageView;
-    
     _homeHeadTextField.placeholder = @"动画番剧小组";
-//    //修改Placeholder字体的颜色
-//    [_homeHeadTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
     
     
     _homeHeadScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width + 1, 50);

@@ -7,6 +7,7 @@
 //
 
 #import "DBIOtherPageViewController.h"
+#import "Masonry.h"
 
 @interface DBIOtherPageViewController ()
 
@@ -19,6 +20,15 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    _otherPageView = [[DBIOtherPageView alloc] init];
+    [self.view addSubview:_otherPageView];
+    [_otherPageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
+    }];
     
 }
 

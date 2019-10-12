@@ -22,13 +22,12 @@
     
     _homeView = [[DBIHomeView alloc] init];
     [self.view addSubview:_homeView];
-//    [_homeView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self);
-//        make.left.equalTo(self);
-//        make.width.equalTo(@(self.view.bounds.size.width));
-//        make.height.equalTo(@(self.view.bounds.size.height));
-//    }];
-    _homeView.frame = CGRectMake(0, 0, 375, 812);
+    [_homeView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
+    }];
     
     [_homeView.homeSegmentedControl addTarget:self action:@selector(changeView:) forControlEvents:UIControlEventValueChanged];
     

@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBIOtherPageView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBIOtherPageViewController : UIViewController
+
+@property DBIOtherPageView *otherPageView;
 
 @end
 

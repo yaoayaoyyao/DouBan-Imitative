@@ -32,6 +32,7 @@
 		9EB67049234DE6F800B7C3FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB67048234DE6F800B7C3FB /* main.m */; };
 		9EB67053234DE6F800B7C3FB /* douban_imitativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB67052234DE6F800B7C3FB /* douban_imitativeTests.m */; };
 		9EB6705E234DE6F800B7C3FB /* douban_imitativeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EB6705D234DE6F800B7C3FB /* douban_imitativeUITests.m */; };
+		9ECFF986235233E10013A759 /* DBIOtherPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECFF985235233E10013A759 /* DBIOtherPageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		9EB67059234DE6F800B7C3FB /* douban-imitativeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "douban-imitativeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB6705D234DE6F800B7C3FB /* douban_imitativeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = douban_imitativeUITests.m; sourceTree = "<group>"; };
 		9EB6705F234DE6F800B7C3FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9ECFF984235233E10013A759 /* DBIOtherPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBIOtherPageView.h; sourceTree = "<group>"; };
+		9ECFF985235233E10013A759 /* DBIOtherPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBIOtherPageView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +195,8 @@
 		9E9FBABA234DFD2200492F63 /* OtherPage */ = {
 			isa = PBXGroup;
 			children = (
-				9E9FBABB234DFD6800492F63 /* DBIOtherPageViewController.h */,
-				9E9FBABC234DFD6800492F63 /* DBIOtherPageViewController.m */,
+				9ECFF983235233C60013A759 /* View */,
+				9ECFF982235233B20013A759 /* Controller */,
 			);
 			path = OtherPage;
 			sourceTree = "<group>";
@@ -274,6 +277,24 @@
 				9EB6705F234DE6F800B7C3FB /* Info.plist */,
 			);
 			path = "douban-imitativeUITests";
+			sourceTree = "<group>";
+		};
+		9ECFF982235233B20013A759 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E9FBABB234DFD6800492F63 /* DBIOtherPageViewController.h */,
+				9E9FBABC234DFD6800492F63 /* DBIOtherPageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9ECFF983235233C60013A759 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9ECFF984235233E10013A759 /* DBIOtherPageView.h */,
+				9ECFF985235233E10013A759 /* DBIOtherPageView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F6CF980C116454C1EDE7F552 /* Frameworks */ = {
@@ -458,6 +479,7 @@
 				9E9FBAE8234E150500492F63 /* DBIHomeView.m in Sources */,
 				9EB67049234DE6F800B7C3FB /* main.m in Sources */,
 				9EB6703B234DE6F600B7C3FB /* AppDelegate.m in Sources */,
+				9ECFF986235233E10013A759 /* DBIOtherPageView.m in Sources */,
 				9E543BFF234F0C4D00F6E963 /* DBIHomeHeadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
