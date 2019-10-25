@@ -7,6 +7,7 @@
 //
 
 #import "DBIHomeViewController.h"
+#import "DBIListViewController.h"
 #import "Masonry.h"
 
 @interface DBIHomeViewController ()
@@ -31,6 +32,8 @@
     
     [_homeView.homeSegmentedControl addTarget:self action:@selector(changeView:) forControlEvents:UIControlEventValueChanged];
     
+    [_homeView.homeButton addTarget:self action:@selector(allMoview) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 #pragma mark -- UISegmentedControl
@@ -42,6 +45,26 @@
 //        [_secondView.secondScrollView setContentOffset:CGPointMake(375, 0) animated:YES];
 //    }
 }
+
+
+- (void)allMoview {
+    DBIListViewController *listViewController = [[DBIListViewController alloc] init];
+    listViewController.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBarHidden = NO;
+    listViewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:listViewController animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    //隐藏导航栏底部分界线
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navImage"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+}
+
+
+
 
 /*
 #pragma mark - Navigation

@@ -37,6 +37,7 @@
     homeViewController.tabBarItem.title = @"书影音";
     homeViewController.tabBarItem.image = [[UIImage imageNamed:@"book"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     homeViewController.tabBarItem.selectedImage = [[UIImage imageNamed:@"book_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
     
     DBIOtherPageViewController *thirdViewController = [[DBIOtherPageViewController alloc]init];
     thirdViewController.tabBarItem.title = @"小组";
@@ -53,10 +54,11 @@
     fiveViewController.tabBarItem.image = [[UIImage imageNamed:@"my"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     fiveViewController.tabBarItem.selectedImage = [[UIImage imageNamed:@"my_selected"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
-    NSArray *arrayNav = [NSArray arrayWithObjects:firstViewController, homeViewController, thirdViewController, fourViewController, fiveViewController, nil];
+    NSArray *arrayNav = [NSArray arrayWithObjects:firstViewController, homeNavigationController, thirdViewController, fourViewController, fiveViewController, nil];
     
     UITabBarController *TBC = [[UITabBarController alloc]init];
     TBC.viewControllers = arrayNav;
+    TBC.selectedIndex = 1;
     self.view.window.rootViewController = TBC ;
     TBC.tabBar.tintColor = [UIColor greenColor];
 }

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DBIHomeHeadView.h"
+#import "DBIHomeHotView.h"
+#import "DBIHomeWillView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property DBIHomeHeadView *homeHeadView;
 @property (nonatomic, strong) UISegmentedControl *homeSegmentedControl;
+@property (nonatomic, strong) UIButton *homeButton;
+@property (nonatomic, strong) UIScrollView *homeScrollView;
+@property DBIHomeHotView *hotView;
+@property DBIHomeWillView *willView;
 
 @end
 
