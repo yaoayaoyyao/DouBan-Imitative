@@ -9,8 +9,11 @@
 #import "DBIHomeViewController.h"
 #import "DBIListViewController.h"
 #import "Masonry.h"
+#import "DBIHomePageManager.h"
 
 @interface DBIHomeViewController ()
+
+@property (nonatomic, strong) UIActivityIndicatorView *hotActivityIndicator;
 
 @end
 
@@ -29,23 +32,17 @@
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
         make.height.equalTo(@([UIScreen mainScreen].bounds.size.height));
     }];
-    
-    [_homeView.homeSegmentedControl addTarget:self action:@selector(changeView:) forControlEvents:UIControlEventValueChanged];
-    
     [_homeView.homeButton addTarget:self action:@selector(allMoview) forControlEvents:UIControlEventTouchUpInside];
     
+    _hotActivityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [_homeView addSubview:_hotActivityIndicator];
+    [_hotActivityIndicator mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.homeView);
+    }];
+    _hotActivityIndicator.hidesWhenStopped = YES;
+    [_hotActivityIndicator startAnimating];
+    [self hotNetwork];
 }
-
-#pragma mark -- UISegmentedControl
-- (void)changeView:(UISegmentedControl *)segmentedControl{
-//    if (segmentedControl.selectedSegmentIndex == 0) {
-//        [_secondView.secondScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-//    }
-//    else if (segmentedControl.selectedSegmentIndex == 1) {
-//        [_secondView.secondScrollView setContentOffset:CGPointMake(375, 0) animated:YES];
-//    }
-}
-
 
 - (void)allMoview {
     DBIListViewController *listViewController = [[DBIListViewController alloc] init];
@@ -63,7 +60,55 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
+- (void)hotNetwork {
+    [[DBIHomePageManager sharedManager] hotNetworkRequestSuccess:^(DBIHomeModel * _Nonnull homeModel) {
+        self.hotHomeModel = homeModel;
+        DBISubjectsModel *subjects = homeModel.subjects[0];
+        NSLog(@"%@", subjects.title);
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            for (DBIHomeHotButton *button in self->_homeView.hotView.hotButtonArray) {
+                DBISubjectsModel *subjects = self.hotHomeModel.subjects[button.tag];
+                button.hotStarView.starScore = subjects.rating.average;
+                button.hotNameLabel.text = subjects.title;
+                NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:subjects.images.small]];
+                button.hotImageView.image = [UIImage imageWithData:data];
+                [button.hotStarView mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(button.hotNameLabel.mas_bottom).offset(5);
+                    make.left.equalTo(button);
+                    make.width.equalTo(button.hotImageView.mas_width);
+                    make.height.equalTo(@(10));
+                }];
+                button.hotStarView.starScore = subjects.rating.average;
+            }
+            [self.hotActivityIndicator stopAnimating];
+        }];
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"添加失败");
+    }];
+}
 
+- (void)willNetwork {
+    [[DBIHomePageManager sharedManager] willNetworkRequestSuccess:^(DBIHomeModel * _Nonnull homeModel) {
+        self.willHomeModel = homeModel;
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+           
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        }];
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"添加失败");
+    }];
+}
 
 
 /*

@@ -45,6 +45,7 @@
         make.height.equalTo(@(20));
     }];
     _willNameLabel.text = @"你好霸王龙";
+    _willNameLabel.font = [UIFont systemFontOfSize:12];
     _willNameLabel.textColor = [UIColor blackColor];
     
     

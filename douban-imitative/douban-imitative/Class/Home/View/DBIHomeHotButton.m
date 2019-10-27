@@ -33,7 +33,9 @@
         make.width.equalTo(@(([UIScreen mainScreen].bounds.size.width - 50) / 3));
         make.height.equalTo(@(1.61 * (([UIScreen mainScreen].bounds.size.width - 50) / 3)));
     }];
-    _hotImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
+    _hotImageView.layer.cornerRadius = 5;
+    _hotImageView.layer.masksToBounds = YES;
+//    _hotImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
     
     [_hotNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.hotImageView.mas_bottom).offset(5);
@@ -41,16 +43,17 @@
         make.width.equalTo(self.hotImageView.mas_width);
         make.height.equalTo(@(20));
     }];
-    _hotNameLabel.text = @"你好霸王龙";
+//    _hotNameLabel.text = @"航海王：狂热行动";
+    _hotNameLabel.font = [UIFont systemFontOfSize:12];
     _hotNameLabel.textColor = [UIColor blackColor];
-    
-    [_hotStarView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.hotNameLabel.mas_bottom).offset(5);
-        make.left.equalTo(self);
-        make.width.equalTo(self.hotImageView.mas_width);
-        make.height.equalTo(@(10));
-    }];
-    _hotStarView.starScore = 7.1;
+
+//    [_hotStarView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.hotNameLabel.mas_bottom).offset(5);
+//        make.left.equalTo(self);
+//        make.width.equalTo(self.hotImageView.mas_width);
+//        make.height.equalTo(@(10));
+//    }];
+//    _hotStarView.starScore = 7.1;
     
 }
 

@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "DBIHomeView.h"
+#import "DBIHomeModel.h"
+#import "DBIHomeHotButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBIHomeViewController : UIViewController
 
 @property DBIHomeView *homeView;
+
+@property DBIHomeModel *hotHomeModel;
+@property DBIHomeModel *willHomeModel;
 
 @end
 

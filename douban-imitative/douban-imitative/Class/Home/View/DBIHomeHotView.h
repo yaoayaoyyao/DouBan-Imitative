@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBIHomeHotButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBIHomeHotView : UIView
+
+@property NSMutableArray <DBIHomeHotButton *> *hotButtonArray;
 
 @end
 

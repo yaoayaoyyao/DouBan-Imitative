@@ -20,6 +20,13 @@
 }
 
 - (void)layoutSubviews {
+    if (_starScore == 0) {
+        _scoreLabel.frame = CGRectMake( 0, 0, self.frame.size.width, self.frame.size.height);
+        _scoreLabel.text = @"暂无评分";
+        _scoreLabel.textColor = [UIColor grayColor];
+        _scoreLabel.font = [UIFont systemFontOfSize:10];
+        return;
+    }
     
     double score = _starScore / 2 - 0.3;
     

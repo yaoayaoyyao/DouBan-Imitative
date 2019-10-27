@@ -7,15 +7,31 @@
 //
 
 #import "DBIHomeWillView.h"
-#import "DBIHomeWillButton.h"
 #import "Masonry.h"
 
 @implementation DBIHomeWillView
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    _willButtonArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 6; i++) {
+        DBIHomeWillButton *willButton = [[DBIHomeWillButton alloc] init];
+        willButton.tag = i;
+        [self addSubview:willButton];
+        [_willButtonArray addObject:willButton];
+    }
+    
+    return self;
+}
+
 - (void)layoutSubviews {
+    int flag = 0;
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 3; j++) {
             DBIHomeWillButton *willButton = [[DBIHomeWillButton alloc] init];
+            willButton = _willButtonArray[flag++];
 //            [willButton mas_makeConstraints:^(MASConstraintMaker *make) {
 //                make.top.equalTo(self).offset(i * (1.61 * (self.bounds.size.width - 50) / 3 + 70));
 //                make.left.equalTo(self).offset(15 + ((self.bounds.size.width - 50) / 3 + 10) * j);
@@ -23,7 +39,6 @@
 //                make.height.equalTo(@(1.61 * (self.bounds.size.width - 50) / 3 + 70));
 //            }];
             willButton.frame = CGRectMake( 15 + ((self.bounds.size.width - 50) / 3 + 10) * j, i * (1.61 * (self.bounds.size.width - 50) / 3 + 70 + 10), ((self.bounds.size.width - 50) / 3), (1.61 * (self.bounds.size.width - 50) / 3 + 70));
-            [self addSubview:willButton];
         }
     }
 }
