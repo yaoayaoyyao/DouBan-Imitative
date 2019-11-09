@@ -10,6 +10,9 @@
 #import "DBIHomeView.h"
 #import "DBIHomeModel.h"
 #import "DBIHomeHotButton.h"
+#import "DBIHomeWillButton.h"
+#import "DBIHomeWillModel.h"
+#import "DBIDetailViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property DBIHomeModel *hotHomeModel;
 @property DBIHomeModel *willHomeModel;
+@property DBIHomeWillModel *willModel;
 
 @end
 

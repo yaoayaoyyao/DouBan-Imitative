@@ -39,8 +39,13 @@
 //                make.height.equalTo(@(1.61 * (self.bounds.size.width - 50) / 3 + 70));
 //            }];
             willButton.frame = CGRectMake( 15 + ((self.bounds.size.width - 50) / 3 + 10) * j, i * (1.61 * (self.bounds.size.width - 50) / 3 + 70 + 10), ((self.bounds.size.width - 50) / 3), (1.61 * (self.bounds.size.width - 50) / 3 + 70));
+            [willButton addTarget:self action:@selector(ClickWillButton:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
+}
+
+- (void)ClickWillButton:(DBIHomeWillButton *)btn {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ClickWillButton" object:btn];
 }
 
 /*

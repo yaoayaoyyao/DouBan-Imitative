@@ -30,6 +30,12 @@
     return  YES;
 }
 
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"ID":@"id"
+                                                                  }];
+}
+
 @end
 
 @implementation DBIHomeModel

@@ -1,20 +1,24 @@
 PODS:
   - JSONModel (1.8.0)
   - Masonry (1.1.0)
+  - SOZOChromoplast (0.0.3)
 
 DEPENDENCIES:
   - JSONModel
   - Masonry
+  - SOZOChromoplast
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - JSONModel
     - Masonry
+    - SOZOChromoplast
 
 SPEC CHECKSUMS:
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SOZOChromoplast: 8902f554d852844c2025b26558d3322f8fae668d
 
-PODFILE CHECKSUM: 2029f021f47922721b6a224063a6416648737559
+PODFILE CHECKSUM: 469353ff42c1fd3ccfa7222bec64dcbe5fd65b6a
 
 COCOAPODS: 1.7.5

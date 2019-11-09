@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "DBIHomeModel.h"
+#import "DBIHomeWillModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^DBIHomePageHandle)(DBIHomeModel *homeModel);
+
+typedef void(^DBIHomeWillHandle)(DBIHomeWillModel *homeWillModel);
 
 typedef void(^ErrorHandle)(NSError *error);
 
@@ -21,6 +24,8 @@ typedef void(^ErrorHandle)(NSError *error);
 - (void)hotNetworkRequestSuccess:(DBIHomePageHandle)succeedBlock error:(ErrorHandle)errorBlock;
 
 - (void)willNetworkRequestSuccess:(DBIHomePageHandle)succeedBlock error:(ErrorHandle)errorBlock;
+
+- (void)willNetworkWithID:(NSString *)ID Success:(DBIHomeWillHandle)succeedBlock error:(ErrorHandle)errorBlock;
 
 @end
 

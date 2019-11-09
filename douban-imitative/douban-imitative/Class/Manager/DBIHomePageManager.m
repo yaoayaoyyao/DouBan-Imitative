@@ -56,4 +56,21 @@ static DBIHomePageManager *manager = nil;
     [willHomeDataTask resume];
 }
 
+- (void)willNetworkWithID:(NSString *)ID Success:(DBIHomeWillHandle)succeedBlock error:(ErrorHandle)errorBlock {
+    NSString *willIDURLStr = [NSString stringWithFormat:@"https://douban-api-git-master.zce.now.sh/v2/movie/subject/%@", ID];
+    NSURL *willIDURL = [NSURL URLWithString:willIDURLStr];
+    NSURLRequest *willIDRequest = [NSURLRequest requestWithURL:willIDURL];
+    NSURLSession *willIDSession = [NSURLSession sharedSession];
+    NSURLSessionDataTask *willIDDataTask = [willIDSession dataTaskWithRequest:willIDRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error == nil) {
+            NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            DBIHomeWillModel *willIDModel = [[DBIHomeWillModel alloc] initWithDictionary:resultDic error:&error];
+            succeedBlock(willIDModel);
+        } else {
+            errorBlock(error);
+        }
+    }];
+    [willIDDataTask resume];
+}
+
 @end

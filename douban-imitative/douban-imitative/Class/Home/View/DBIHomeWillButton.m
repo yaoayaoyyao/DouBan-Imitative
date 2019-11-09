@@ -36,7 +36,6 @@
         make.width.equalTo(@(([UIScreen mainScreen].bounds.size.width - 50) / 3));
         make.height.equalTo(@(1.61 * (([UIScreen mainScreen].bounds.size.width - 50) / 3)));
     }];
-    _willImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
     
     [_willNameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.willImageView.mas_bottom).offset(5);
@@ -44,7 +43,6 @@
         make.width.equalTo(self.willImageView.mas_width);
         make.height.equalTo(@(20));
     }];
-    _willNameLabel.text = @"你好霸王龙";
     _willNameLabel.font = [UIFont systemFontOfSize:12];
     _willNameLabel.textColor = [UIColor blackColor];
     
@@ -55,7 +53,7 @@
         make.width.equalTo(self.willImageView.mas_width);
         make.height.equalTo(@(15));
     }];
-    _willNumberLabel.text = @"1113人想看";
+//    _willNumberLabel.text = @"1113人想看";
     _willNumberLabel.textColor = [UIColor grayColor];
     _willNumberLabel.font = [UIFont systemFontOfSize:13];
     
@@ -65,14 +63,11 @@
         make.width.equalTo(@(([UIScreen mainScreen].bounds.size.width - 50) / 6));
         make.height.equalTo(@(20));
     }];
-    _willTimeLabel.text = @"10月19日";
     _willTimeLabel.textAlignment = NSTextAlignmentCenter;
     _willTimeLabel.layer.cornerRadius = 3;
     _willTimeLabel.layer.masksToBounds = YES;
     _willTimeLabel.textColor = [UIColor redColor];
     _willTimeLabel.font = [UIFont systemFontOfSize:10];
-    _willTimeLabel.layer.borderWidth = 1;
-    _willTimeLabel.layer.borderColor = [[UIColor redColor]CGColor];
 }
 
 /*

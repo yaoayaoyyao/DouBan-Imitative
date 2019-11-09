@@ -7,14 +7,16 @@
 //
 
 #import "DBIListView.h"
-#import "DBIListTableViewCell.h"
 #import "Masonry.h"
+#import "DBIListHotIDModel.h"
 
 static NSString *listString = @"listTableViewCell";
 @implementation DBIListView
 
 - (instancetype) initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
+    
+    _listModelArray = [[NSMutableArray alloc] init];
     
     _listSegmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"正在上映", @"即将上映", @"10月观影指南", nil]];
     [self addSubview:_listSegmentedControl];
@@ -23,6 +25,7 @@ static NSString *listString = @"listTableViewCell";
     [_listTableView registerClass:[DBIListTableViewCell class] forCellReuseIdentifier:listString];
     _listTableView.delegate = self;
     _listTableView.dataSource = self;
+    _listTableView.tag = 11;
     [self addSubview:_listTableView];
     
     
@@ -58,15 +61,71 @@ static NSString *listString = @"listTableViewCell";
 
 #pragma mark -- UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 31;
+    return _numberOfTableView;
+//    return [_listModelArray count];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 140;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([_listModelArray count] == 0 || [_listModelArray count] != _numberOfTableView) {
+        DBIListTableViewCell *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listString forIndexPath:indexPath];
+        return listTableViewCell;
+    }
     DBIListTableViewCell *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listString forIndexPath:indexPath];
-
+    DBIListHotIDModel *listHotIDModel = _listModelArray[indexPath.row];
+    listTableViewCell.nameListLabel.text = listHotIDModel.title;
+    listTableViewCell.starView.starScore = listHotIDModel.rating.average;
+    
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:listHotIDModel.images.small]];
+    listTableViewCell.postersListImageView.image = [UIImage imageWithData:data];
+    NSString *countries = @"";
+    for (int i = 0; i < [listHotIDModel.countries count]; i++) {
+        if (i == 0) {
+            countries = [countries stringByAppendingFormat:@"%@", listHotIDModel.countries[i]];
+        } else {
+            countries = [countries stringByAppendingFormat:@" %@", listHotIDModel.countries[i]];
+        }
+    }
+    NSString *genres = @"";
+    for (int i = 0; i < [listHotIDModel.genres count]; i++) {
+        if (i == 0) {
+            genres = [genres stringByAppendingFormat:@"%@", listHotIDModel.genres[i]];
+        } else {
+            genres = [genres stringByAppendingFormat:@" %@", listHotIDModel.genres[i]];
+        }
+    }
+    NSString *directors = @"";
+    for (int i = 0; i < [listHotIDModel.directors count]; i++) {
+        DBICastsSubjectModel *subject = listHotIDModel.directors[i];
+        if (i == 0) {
+            directors = [directors stringByAppendingFormat:@"%@", subject.name];
+        } else {
+            directors = [directors stringByAppendingFormat:@" %@", subject.name];
+        }
+    }
+    NSString *casts = @"";
+    for (int i = 0; i < [listHotIDModel.casts count]; i++) {
+        DBICastsSubjectModel *subject = listHotIDModel.casts[i];
+        if (i == 2) {
+            break;
+        }
+        if (i == 0) {
+            casts = [casts stringByAppendingFormat:@"%@", subject.name];
+        } else {
+            casts = [casts stringByAppendingFormat:@" %@", subject.name];
+        }
+    }
+    listTableViewCell.introduceListTextView.text = [NSString stringWithFormat:@"%@ / %@ / %@ / %@ / %@ ", listHotIDModel.year, countries, genres, directors, casts];
+    NSLog(@"%@", listTableViewCell.introduceListTextView.text);
     return listTableViewCell;
+}
+
+#pragma mark -- UITableViewDataSource
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView.tag == 11 && scrollView.contentOffset.y >= 10 * 140 && _numberOfTableView == 10) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ListTableView" object:nil];
+    }
 }
 
 /*

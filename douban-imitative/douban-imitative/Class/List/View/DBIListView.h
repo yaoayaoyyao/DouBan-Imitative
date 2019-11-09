@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBIListTableViewCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBIListView : UIView
 <UITableViewDelegate, UITableViewDataSource>
 
+@property int numberOfTableView;
 @property (nonatomic, strong) UISegmentedControl *listSegmentedControl;
 @property (nonatomic, strong) UITableView *listTableView;
+@property NSMutableArray *listModelArray;
 
 @end
 

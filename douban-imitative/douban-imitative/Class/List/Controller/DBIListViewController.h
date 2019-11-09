@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "DBIListView.h"
+#import "DBIListHotModel.h"
+#import "DBIListHotIDModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DBIListViewController : UIViewController
 
 @property (nonatomic, strong) DBIListView *listView;
+@property DBIListHotModel *hotListModel;
+@property NSMutableArray <DBIListHotIDModel *> *listHotIDModelArray;
 
 @end
 

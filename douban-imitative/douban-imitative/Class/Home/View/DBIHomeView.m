@@ -91,6 +91,8 @@
         make.size.equalTo(self->_homeScrollView);
     }];
     
+    
+    
 }
 
 - (void)changeTableView:(UISegmentedControl *)segmentedControl{
@@ -103,6 +105,7 @@
         [_homeScrollView setContentOffset:CGPointMake(self.bounds.size.width, 0) animated:NO];
     }
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

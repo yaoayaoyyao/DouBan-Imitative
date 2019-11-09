@@ -40,6 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString *title;
 @property (nonatomic) NSString *mainland_pubdate;
 @property (nonatomic) DBIImagesModel *images;
+@property (nonatomic) NSString *ID;
 
 @end
 

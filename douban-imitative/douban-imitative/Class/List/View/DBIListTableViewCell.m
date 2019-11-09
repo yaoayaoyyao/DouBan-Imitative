@@ -45,9 +45,20 @@
         make.width.equalTo(@(110 / 1.61));
         make.height.equalTo(@(110));
     }];
-    _postersListImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
     _postersListImageView.layer.cornerRadius = 5;
     _postersListImageView.layer.masksToBounds = YES;
+//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_postersListImageView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:_postersListImageView.bounds.size];
+//    CAShapeLayer *maskLayer=[[CAShapeLayer alloc] init];
+//    maskLayer.frame=_postersListImageView.bounds;
+//    //设置图形样子
+//    maskLayer.path=maskPath.CGPath;
+//    _postersListImageView.layer.mask=maskLayer;
+//    UIGraphicsBeginImageContextWithOptions(_postersListImageView.bounds.size, NO, 1.0);
+//    [[UIBezierPath bezierPathWithRoundedRect:_postersListImageView.bounds cornerRadius:5] addClip];
+//    [_postersListImageView drawRect:_postersListImageView.bounds];
+//    _postersListImageView.image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+    
     
     [_nameListLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(15);
@@ -55,7 +66,6 @@
         make.width.equalTo(@(170));
         make.height.equalTo(@(30));
     }];
-    _nameListLabel.text = @"航海王：狂热行动";
     _nameListLabel.textColor = [UIColor blackColor];
     _nameListLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:19];
     
@@ -65,7 +75,6 @@
         make.width.equalTo(@(170));
         make.height.equalTo(@(10));
     }];
-    _starView.starScore = 6.8;
     
     
     
@@ -80,7 +89,6 @@
     _introduceListTextView.editable = NO;
     _introduceListTextView.textColor = [UIColor grayColor];
     [_introduceListTextView sizeToFit];
-    _introduceListTextView.text = @"2019 / 中国大陆 / 剧情 / 陈凯歌 张一白 管虎 薛晓路 徐峥 宁浩 文牧野 / 黄渤 张译";
     _introduceListTextView.font = [UIFont systemFontOfSize:12];
     
     [_dottedListLabel mas_makeConstraints:^(MASConstraintMaker *make) {
