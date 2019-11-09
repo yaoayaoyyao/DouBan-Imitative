@@ -32,8 +32,6 @@
     [rightButton setTintColor:[UIColor blackColor]];
     self.navigationItem.rightBarButtonItem = rightButton;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ClickListTableView) name:@"ListTableView" object:nil];
-    
     _listView = [[DBIListView alloc] init];
     [self.view addSubview:_listView];
     _listView.numberOfTableView = 10;
@@ -54,43 +52,42 @@
 - (void)hotListNetwork {
     [[DBIListPageManager sharedManager] hotListNetworkSuccess:^(DBIListHotModel * _Nonnull listHotModel) {
         self.hotListModel = listHotModel;
-        DBIListSubjectsModel *subject = self.hotListModel.subjects[0];
-        NSLog(@"%@", subject.ID);
+        DBIListSubjectsModel *subjects = self.hotListModel.subjects[0];
+        NSLog(@"%@", subjects.ID);
+        
+        for (int i = 0; i < [self.hotListModel.subjects count]; i++) {
+            NSLog(@"%d", i);
+            DBIListSubjectsModel *subject = self.hotListModel.subjects[i];
+            [[DBIListPageManager sharedManager] hotListNetworkWithID:subject.ID Success:^(DBIListHotIDModel * _Nonnull listHotIDModel) {
+                NSLog(@"%@", listHotIDModel.title);
+                [self.listHotIDModelArray addObject:listHotIDModel];
+                if ([self.listHotIDModelArray count] == [self.hotListModel.subjects count]) {
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        [self.listView.listTableView reloadData];
+                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ClickListTableView) name:@"ListTableView" object:nil];
+                    }];
+                }
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    [self.listView.listTableView reloadData];
+//                });
+            } error:^(NSError * _Nonnull error) {
+                NSLog(@"添加失败");
+            }];
+        }
+        
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self hotListNetWithID];
-            NSLog(@"%d", [self.hotListModel.subjects count]);
+            [self.listView.listTableView reloadData];
         }];
     } error:^(NSError * _Nonnull error) {
         NSLog(@"添加失败");
     }];
 }
 
-- (void)hotListNetWithID {
-    for (int i = 0; i < /*[self.hotListModel.subjects count]*/ _listView.numberOfTableView; i++) {
-        NSLog(@"%d", i);
-        DBIListSubjectsModel *subject = self.hotListModel.subjects[i];
-        [[DBIListPageManager sharedManager] hotListNetworkWithID:subject.ID Success:^(DBIListHotIDModel * _Nonnull listHotIDModel) {
-            [self.listHotIDModelArray addObject:listHotIDModel];
-            if (i == self.listView.numberOfTableView - 1) {
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                    if ([self.listView.listModelArray count] != self.listView.numberOfTableView) {
-//                        <#statements#>
-//                    }
-                    [self.listView.listTableView reloadData];
-                    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ClickListTableView) name:@"ListTableView" object:nil];
-                }];
-            }
-        } error:^(NSError * _Nonnull error) {
-            NSLog(@"添加失败");
-        }];
-    }
-}
-
 - (void)ClickListTableView {
     _listView.numberOfTableView = 20;
-    [self hotListNetwork];
-//    [_listView.listTableView reloadData];
+    [_listView.listTableView reloadData];
 }
+
 
 
 

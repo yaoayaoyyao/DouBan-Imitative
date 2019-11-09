@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DBIDetailTitleView.h"
+#import "DBIDetailScoreView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UITableView *detailTableView;
 @property BOOL flag;
+@property DBIDetailTitleView *titleDetailView;
+@property DBIDetailScoreView *scoreDetailView;
 
 @end
 

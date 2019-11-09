@@ -23,6 +23,13 @@
     _detailTableView.dataSource = self;
     [self addSubview:_detailTableView];
     
+    _titleDetailView = [[DBIDetailTitleView alloc] init];
+    [_detailTableView addSubview:_titleDetailView];
+//    _detailTableView.tableHeaderView = _titleDetailView;
+    
+    _scoreDetailView = [[DBIDetailScoreView alloc] init];
+    [_detailTableView addSubview:_scoreDetailView];
+    
     return self;
 }
 
@@ -34,6 +41,20 @@
         make.left.equalTo(self);
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
         make.height.equalTo(@([UIScreen mainScreen].bounds.size.height - statusRect.size.height - 74));
+    }];
+    
+    [_titleDetailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.detailTableView);
+        make.left.equalTo(self.detailTableView);
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.height.equalTo(@(170));
+    }];
+    
+    [_scoreDetailView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleDetailView.mas_bottom).offset(10);
+        make.left.equalTo(self.titleDetailView);
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.height.equalTo(@(150));
     }];
 }
 

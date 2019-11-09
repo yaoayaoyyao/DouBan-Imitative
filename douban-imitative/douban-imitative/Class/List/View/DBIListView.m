@@ -11,6 +11,7 @@
 #import "DBIListHotIDModel.h"
 
 static NSString *listString = @"listTableViewCell";
+static NSString *listStringTwo = @"listTableViewCellTwo";
 @implementation DBIListView
 
 - (instancetype) initWithFrame:(CGRect)frame {
@@ -23,6 +24,7 @@ static NSString *listString = @"listTableViewCell";
     
     _listTableView = [[UITableView alloc] init];
     [_listTableView registerClass:[DBIListTableViewCell class] forCellReuseIdentifier:listString];
+    [_listTableView registerClass:[DBIListTableViewCellTwo class] forCellReuseIdentifier:listStringTwo];
     _listTableView.delegate = self;
     _listTableView.dataSource = self;
     _listTableView.tag = 11;
@@ -68,14 +70,28 @@ static NSString *listString = @"listTableViewCell";
     return 140;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([_listModelArray count] == 0 || [_listModelArray count] != _numberOfTableView) {
-        DBIListTableViewCell *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listString forIndexPath:indexPath];
+    if ([_listModelArray count] == 0) {
+        DBIListTableViewCellTwo *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listStringTwo forIndexPath:indexPath];
+        return listTableViewCell;
+    }
+    if ([_listModelArray count] <= indexPath.row) {
+        DBIListTableViewCellTwo *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listStringTwo forIndexPath:indexPath];
         return listTableViewCell;
     }
     DBIListTableViewCell *listTableViewCell = [_listTableView dequeueReusableCellWithIdentifier:listString forIndexPath:indexPath];
     DBIListHotIDModel *listHotIDModel = _listModelArray[indexPath.row];
     listTableViewCell.nameListLabel.text = listHotIDModel.title;
     listTableViewCell.starView.starScore = listHotIDModel.rating.average;
+    
+    if ([listTableViewCell.starView.scoreLabel.text isEqualToString:@"暂无评分"]) {
+        [listTableViewCell.buyListButton setTitle:@"预售" forState:UIControlStateNormal];
+        [listTableViewCell.buyListButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        listTableViewCell.buyListButton.layer.borderColor = [[UIColor orangeColor]CGColor];
+    } else {
+        [listTableViewCell.buyListButton setTitle:@"购票" forState:UIControlStateNormal];
+        [listTableViewCell.buyListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        listTableViewCell.buyListButton.layer.borderColor = [[UIColor redColor]CGColor];
+    }
     
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:listHotIDModel.images.small]];
     listTableViewCell.postersListImageView.image = [UIImage imageWithData:data];
@@ -123,7 +139,9 @@ static NSString *listString = @"listTableViewCell";
 
 #pragma mark -- UITableViewDataSource
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView.tag == 11 && scrollView.contentOffset.y >= 10 * 140 && _numberOfTableView == 10) {
+    NSLog(@"%f", scrollView.contentOffset.y);
+    NSLog(@"%d", _numberOfTableView);
+    if (scrollView.tag == 11 && scrollView.contentOffset.y >= 780 && _numberOfTableView == 10) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ListTableView" object:nil];
     }
 }

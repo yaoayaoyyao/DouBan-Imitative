@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBIListTableViewCell.h"
+#import "DBIListTableViewCellTwo.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

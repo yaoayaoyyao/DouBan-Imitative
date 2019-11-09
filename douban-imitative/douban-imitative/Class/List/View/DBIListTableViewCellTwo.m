@@ -1,15 +1,15 @@
 //
-//  DBIListTableViewCell.m
+//  DBIListTableViewCellTwo.m
 //  douban-imitative
 //
-//  Created by Jaya Shen on 2019/10/18.
+//  Created by Jaya Shen on 2019/11/9.
 //  Copyright © 2019 Jaya Shen. All rights reserved.
 //
 
-#import "DBIListTableViewCell.h"
+#import "DBIListTableViewCellTwo.h"
 #import "Masonry.h"
 
-@implementation DBIListTableViewCell
+@implementation DBIListTableViewCellTwo
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -19,9 +19,6 @@
     
     _nameListLabel = [[UILabel alloc] init];
     [self addSubview:_nameListLabel];
-    
-    _starView = [[StarView alloc] init];
-    [self addSubview:_starView];
     
     _introduceListTextView = [[UITextView alloc] init];
     [self addSubview:_introduceListTextView];
@@ -47,18 +44,6 @@
     }];
     _postersListImageView.layer.cornerRadius = 5;
     _postersListImageView.layer.masksToBounds = YES;
-//    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_postersListImageView.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:_postersListImageView.bounds.size];
-//    CAShapeLayer *maskLayer=[[CAShapeLayer alloc] init];
-//    maskLayer.frame=_postersListImageView.bounds;
-//    //设置图形样子
-//    maskLayer.path=maskPath.CGPath;
-//    _postersListImageView.layer.mask=maskLayer;
-//    UIGraphicsBeginImageContextWithOptions(_postersListImageView.bounds.size, NO, 1.0);
-//    [[UIBezierPath bezierPathWithRoundedRect:_postersListImageView.bounds cornerRadius:5] addClip];
-//    [_postersListImageView drawRect:_postersListImageView.bounds];
-//    _postersListImageView.image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    
     
     [_nameListLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(15);
@@ -69,17 +54,8 @@
     _nameListLabel.textColor = [UIColor blackColor];
     _nameListLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:19];
     
-    [_starView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.nameListLabel.mas_bottom).offset(5);
-        make.left.equalTo(self.postersListImageView.mas_right).offset(15);
-        make.width.equalTo(@(170));
-        make.height.equalTo(@(10));
-    }];
-    
-    
-    
     [_introduceListTextView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.starView.mas_bottom).offset(5);
+        make.top.equalTo(self.nameListLabel.mas_bottom).offset(20);
         make.left.equalTo(self.postersListImageView.mas_right).offset(15);
         make.width.equalTo(@(170));
         make.height.equalTo(@(140 - 75));
@@ -108,8 +84,11 @@
         make.width.equalTo(@(60));
         make.height.equalTo(@(30));
     }];
+    [_buyListButton setTitle:@"---" forState:UIControlStateNormal];
     _buyListButton.titleLabel.font = [UIFont systemFontOfSize:13];
+    [_buyListButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     _buyListButton.layer.borderWidth = 1;
+    _buyListButton.layer.borderColor = [[UIColor redColor]CGColor];
     _buyListButton.layer.cornerRadius = 5;
     _buyListButton.layer.masksToBounds = YES;
     
@@ -119,7 +98,7 @@
         make.width.equalTo(@(80));
         make.height.equalTo(@(30));
     }];
-    _peopleListLabel.text = @"44.2万人看过";
+    _peopleListLabel.text = @"----------";
     _peopleListLabel.textAlignment = NSTextAlignmentCenter;
     _peopleListLabel.textColor = [UIColor grayColor];
     _peopleListLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
@@ -134,5 +113,13 @@
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:198/255.0 green:198/255.0 blue:198/255.0 alpha:1].CGColor);
     CGContextStrokeRect(context, CGRectMake(15, rect.size.height, rect.size.width, 1));
 }
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end
