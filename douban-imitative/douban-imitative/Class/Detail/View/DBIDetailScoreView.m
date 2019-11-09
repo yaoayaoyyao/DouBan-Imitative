@@ -88,12 +88,70 @@
         }
     }
     
-//    [_fiveProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.titleScoreLabel.mas_bottom).offset(10);
-//        make.left.equalTo(self).offset(50);
-//        make.width.equalTo(@(50));
-//        make.height.equalTo(@(50));
-//    }];
+    [_fiveProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleScoreLabel.mas_bottom).offset(10);
+        make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
+        make.width.equalTo(@(165));
+        make.height.equalTo(@(6));
+    }];
+    _fiveProgressView.backgroundColor = [UIColor lightGrayColor];
+    _fiveProgressView.progressTintColor = [UIColor orangeColor];
+    _fiveProgressView.progressViewStyle = UIProgressViewStyleDefault;
+    _fiveProgressView.progress = 0.8;
+    _fiveProgressView.layer.cornerRadius = 4;
+    _fiveProgressView.layer.masksToBounds = YES;
+    
+    [_fourProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.fiveProgressView.mas_bottom);
+        make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
+        make.width.equalTo(@(165));
+        make.height.equalTo(@(6));
+    }];
+    _fourProgressView.backgroundColor = [UIColor lightGrayColor];
+    _fourProgressView.progressTintColor = [UIColor orangeColor];
+    _fourProgressView.progressViewStyle = UIProgressViewStyleDefault;
+    _fourProgressView.progress = 0.8;
+    _fourProgressView.layer.cornerRadius = 4;
+    _fourProgressView.layer.masksToBounds = YES;
+    
+    [_threeProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.fourProgressView.mas_bottom);
+        make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
+        make.width.equalTo(@(165));
+        make.height.equalTo(@(6));
+    }];
+    _threeProgressView.backgroundColor = [UIColor lightGrayColor];
+    _threeProgressView.progressTintColor = [UIColor orangeColor];
+    _threeProgressView.progressViewStyle = UIProgressViewStyleDefault;
+    _threeProgressView.progress = 0.8;
+    _threeProgressView.layer.cornerRadius = 4;
+    _threeProgressView.layer.masksToBounds = YES;
+    
+    [_twoProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.threeProgressView.mas_bottom);
+        make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
+        make.width.equalTo(@(165));
+        make.height.equalTo(@(6));
+    }];
+    _twoProgressView.backgroundColor = [UIColor lightGrayColor];
+    _twoProgressView.progressTintColor = [UIColor orangeColor];
+    _twoProgressView.progressViewStyle = UIProgressViewStyleDefault;
+    _twoProgressView.progress = 0.8;
+    _twoProgressView.layer.cornerRadius = 4;
+    _twoProgressView.layer.masksToBounds = YES;
+    
+    [_oneProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.twoProgressView.mas_bottom);
+        make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
+        make.width.equalTo(@(165));
+        make.height.equalTo(@(6));
+    }];
+    _oneProgressView.backgroundColor = [UIColor lightGrayColor];
+    _oneProgressView.progressTintColor = [UIColor orangeColor];
+    _oneProgressView.progressViewStyle = UIProgressViewStyleDefault;
+    _oneProgressView.progress = 0.8;
+    _oneProgressView.layer.cornerRadius = 4;
+    _oneProgressView.layer.masksToBounds = YES;
     
 }
 
