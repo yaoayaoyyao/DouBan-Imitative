@@ -43,7 +43,7 @@
     }];
     _titleImageView.layer.cornerRadius = 5;
     _titleImageView.layer.masksToBounds = YES;
-    _titleImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
+//    _titleImageView.image = [UIImage imageNamed:@"begin_1.jpg"];
     
     [_nameTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
@@ -51,7 +51,7 @@
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width - 110));
         make.height.equalTo(@(30));
     }];
-    _nameTitleLabel.text = @"我和我的祖国";
+//    _nameTitleLabel.text = @"我和我的祖国";
     _nameTitleLabel.textColor = [UIColor whiteColor];
     _nameTitleLabel.font = [UIFont systemFontOfSize:25];
     
@@ -62,7 +62,7 @@
         make.width.equalTo(@([UIScreen mainScreen].bounds.size.width - 110));
         make.height.equalTo(@(25));
     }];
-    _yearTitleLabel.text = @"(2019)";
+//    _yearTitleLabel.text = @"(2019)";
     _yearTitleLabel.textColor = [UIColor whiteColor];
     _yearTitleLabel.font = [UIFont systemFontOfSize:15];
     
@@ -76,7 +76,7 @@
     _allTitleTextView.userInteractionEnabled = NO;
     _allTitleTextView.scrollEnabled = NO;
     _allTitleTextView.editable = NO;
-    _allTitleTextView.textColor = [UIColor grayColor];
+    _allTitleTextView.textColor = [UIColor whiteColor];
     [_allTitleTextView sizeToFit];
     _allTitleTextView.font = [UIFont systemFontOfSize:12];
     

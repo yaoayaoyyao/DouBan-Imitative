@@ -10,16 +10,11 @@
 #import <Masonry.h>
 
 @implementation DBIDetailScoreView
-//@property (nonatomic, strong) UILabel *titleScoreLabel;
-//@property (nonatomic, strong) UILabel *numberScoreLabel;
-//@property (nonatomic, strong) StarView *scoreStarView;
-//@property (nonatomic, strong) UIProgressView *fiveProgressView;
-//@property (nonatomic, strong) UIProgressView *fourProgressView;
-//@property (nonatomic, strong) UIProgressView *threeProgressView;
-//@property (nonatomic, strong) UIProgressView *twoProgressView;
-//@property (nonatomic, strong) UIProgressView *oneProgressView;
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
+    
+    self.backgroundColor = [UIColor blackColor];
+    self.alpha = 0.5;
     
     _scoreStarArray = [NSMutableArray array];
     for (int i = 0; i < 15; i++) {
@@ -54,6 +49,12 @@
     _oneProgressView = [[UIProgressView alloc] init];
     [self addSubview:_oneProgressView];
     
+    _numberOfPeopleLabel = [[UILabel alloc] init];
+    [self addSubview:_numberOfPeopleLabel];
+    
+    _peopleScoreLabel = [[UILabel alloc] init];
+    [self addSubview:_peopleScoreLabel];
+    
     return self;
 }
 
@@ -68,7 +69,7 @@
         make.height.equalTo(@(20));
     }];
     
-    _numberScoreLabel.text = @"6.7";
+//    _numberScoreLabel.text = @"6.7";
     _numberScoreLabel.textAlignment = NSTextAlignmentCenter;
     _numberScoreLabel.textColor = [UIColor whiteColor];
     _numberScoreLabel.font = [UIFont systemFontOfSize:25];
@@ -97,7 +98,7 @@
     _fiveProgressView.backgroundColor = [UIColor lightGrayColor];
     _fiveProgressView.progressTintColor = [UIColor orangeColor];
     _fiveProgressView.progressViewStyle = UIProgressViewStyleDefault;
-    _fiveProgressView.progress = 0.8;
+//    _fiveProgressView.progress = 0.8;
     _fiveProgressView.layer.cornerRadius = 4;
     _fiveProgressView.layer.masksToBounds = YES;
     
@@ -110,7 +111,7 @@
     _fourProgressView.backgroundColor = [UIColor lightGrayColor];
     _fourProgressView.progressTintColor = [UIColor orangeColor];
     _fourProgressView.progressViewStyle = UIProgressViewStyleDefault;
-    _fourProgressView.progress = 0.8;
+//    _fourProgressView.progress = 0.8;
     _fourProgressView.layer.cornerRadius = 4;
     _fourProgressView.layer.masksToBounds = YES;
     
@@ -123,7 +124,7 @@
     _threeProgressView.backgroundColor = [UIColor lightGrayColor];
     _threeProgressView.progressTintColor = [UIColor orangeColor];
     _threeProgressView.progressViewStyle = UIProgressViewStyleDefault;
-    _threeProgressView.progress = 0.8;
+//    _threeProgressView.progress = 0.8;
     _threeProgressView.layer.cornerRadius = 4;
     _threeProgressView.layer.masksToBounds = YES;
     
@@ -136,7 +137,7 @@
     _twoProgressView.backgroundColor = [UIColor lightGrayColor];
     _twoProgressView.progressTintColor = [UIColor orangeColor];
     _twoProgressView.progressViewStyle = UIProgressViewStyleDefault;
-    _twoProgressView.progress = 0.8;
+//    _twoProgressView.progress = 0.8;
     _twoProgressView.layer.cornerRadius = 4;
     _twoProgressView.layer.masksToBounds = YES;
     
@@ -149,9 +150,31 @@
     _oneProgressView.backgroundColor = [UIColor lightGrayColor];
     _oneProgressView.progressTintColor = [UIColor orangeColor];
     _oneProgressView.progressViewStyle = UIProgressViewStyleDefault;
-    _oneProgressView.progress = 0.8;
+//    _oneProgressView.progress = 0.8;
     _oneProgressView.layer.cornerRadius = 4;
     _oneProgressView.layer.masksToBounds = YES;
+    
+    _numberOfPeopleLabel.text = @"7922人评分";
+    _numberOfPeopleLabel.textAlignment = NSTextAlignmentRight;
+    _numberOfPeopleLabel.textColor = [UIColor whiteColor];
+    _numberOfPeopleLabel.font = [UIFont systemFontOfSize:10];
+    [_numberOfPeopleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.oneProgressView.mas_bottom);
+        make.right.equalTo(self.fiveProgressView);
+        make.width.equalTo(@(70));
+        make.height.equalTo(@(10));
+    }];
+    
+    _peopleScoreLabel.text = @"9460人看过 5.7万人想看";
+    _peopleScoreLabel.textAlignment = NSTextAlignmentRight;
+    _peopleScoreLabel.textColor = [UIColor whiteColor];
+    _peopleScoreLabel.font = [UIFont systemFontOfSize:12];
+    [_peopleScoreLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.numberOfPeopleLabel.mas_bottom);
+        make.right.equalTo(self.oneProgressView).offset(20);
+        make.width.equalTo(@(150));
+        make.height.equalTo(@(20));
+    }];
     
 }
 

@@ -52,10 +52,12 @@
     
     [_scoreDetailView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleDetailView.mas_bottom).offset(10);
-        make.left.equalTo(self.titleDetailView);
-        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width));
-        make.height.equalTo(@(150));
+        make.left.equalTo(self).offset(10);
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.width - 20));
+        make.height.equalTo(@(120));
     }];
+    _scoreDetailView.layer.cornerRadius = 5;
+    _scoreDetailView.layer.masksToBounds = YES;
 }
 
 #pragma mark -- UITableViewDelegate

@@ -102,8 +102,66 @@
 
 - (void)detailNetWork {
     [[DBIDetailManager sharedManager] hotDetailNetworkWithID:_ID Success:^(DBIDetailModel * _Nonnull listHotIDModel) {
-//        _detailView.titleDetailView.titleImageView.image = _movieImage;
-//        _detailView.titleDetailView.nameTitleLabel.text = 
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:listHotIDModel.images.small]];
+            self.detailView.titleDetailView.titleImageView.image = [UIImage imageWithData:data];
+            self.detailView.titleDetailView.nameTitleLabel.text = listHotIDModel.title;
+            self.detailView.titleDetailView.yearTitleLabel.text = [NSString stringWithFormat:@"(%@)",listHotIDModel.year];
+            NSString *countries = @"";
+            for (int i = 0; i < [listHotIDModel.countries count]; i++) {
+                if (i == 0) {
+                    countries = [countries stringByAppendingFormat:@"%@", listHotIDModel.countries[i]];
+                } else {
+                    countries = [countries stringByAppendingFormat:@" %@", listHotIDModel.countries[i]];
+                }
+            }
+            NSString *genres = @"";
+            for (int i = 0; i < [listHotIDModel.genres count]; i++) {
+                if (i == 0) {
+                    genres = [genres stringByAppendingFormat:@"%@", listHotIDModel.genres[i]];
+                } else {
+                    genres = [genres stringByAppendingFormat:@" %@", listHotIDModel.genres[i]];
+                }
+            }
+            NSString *directors = @"";
+            for (int i = 0; i < [listHotIDModel.directors count]; i++) {
+                DBIDetailCastsSubjectModel *subject = listHotIDModel.directors[i];
+                if (i == 0) {
+                    directors = [directors stringByAppendingFormat:@"%@", subject.name];
+                } else {
+                    directors = [directors stringByAppendingFormat:@" %@", subject.name];
+                }
+            }
+            NSString *casts = @"";
+            for (int i = 0; i < [listHotIDModel.casts count]; i++) {
+                DBIDetailCastsSubjectModel *subject = listHotIDModel.casts[i];
+                if (i == 2) {
+                    break;
+                }
+                if (i == 0) {
+                    casts = [casts stringByAppendingFormat:@"%@", subject.name];
+                } else {
+                    casts = [casts stringByAppendingFormat:@" %@", subject.name];
+                }
+            }
+            self.detailView.titleDetailView.allTitleTextView.text = [NSString stringWithFormat:@"%@ / %@ / %@ / %@ / %@ ", listHotIDModel.year, countries, genres, directors, casts];
+            
+            self.detailView.scoreDetailView.numberScoreLabel.text = [NSString stringWithFormat:@"%.1f", listHotIDModel.rating.average];
+            float all = listHotIDModel.rating.details.one + listHotIDModel.rating.details.two + listHotIDModel.rating.details.three + listHotIDModel.rating.details.four + listHotIDModel.rating.details.five;
+            self.detailView.scoreDetailView.fiveProgressView.progress = (listHotIDModel.rating.details.five / all);
+            self.detailView.scoreDetailView.fourProgressView.progress = (listHotIDModel.rating.details.four / all);
+            self.detailView.scoreDetailView.threeProgressView.progress = (listHotIDModel.rating.details.three / all);
+            self.detailView.scoreDetailView.twoProgressView.progress = (listHotIDModel.rating.details.two / all);
+            self.detailView.scoreDetailView.oneProgressView.progress = (listHotIDModel.rating.details.one / all);
+            
+            self.detailView.scoreDetailView.scoreStarView.starScore = listHotIDModel.rating.average;
+            [self.detailView.scoreDetailView.scoreStarView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(self.detailView.scoreDetailView.numberScoreLabel.mas_bottom).offset(-5);
+                make.left.equalTo(self.detailView.scoreDetailView.numberScoreLabel).offset(-5);
+                make.width.equalTo(@(50));
+                make.height.equalTo(@(10));
+            }];
+        }];
     } error:^(NSError * _Nonnull error) {
         
     }];

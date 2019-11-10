@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIProgressView *twoProgressView;
 @property (nonatomic, strong) UIProgressView *oneProgressView;
 @property NSMutableArray <UIImageView *> *scoreStarArray;
+@property (nonatomic, strong) UILabel *numberOfPeopleLabel;
+@property (nonatomic, strong) UILabel *peopleScoreLabel;
 
 @end
 

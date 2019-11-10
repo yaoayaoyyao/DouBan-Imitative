@@ -8,6 +8,24 @@
 
 #import "DBIDetailModel.h"
 
+@implementation DBIDetailDetailModel
+
++(BOOL)propertyIsOptional:(NSString *)propertyName{
+    return  YES;
+}
+
++ (JSONKeyMapper *)keyMapper {
+    return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{
+                                                                  @"one":@"1",
+                                                                  @"two":@"2",
+                                                                  @"three":@"3",
+                                                                  @"four":@"4",
+                                                                  @"five":@"5",
+                                                                  }];
+}
+
+@end
+
 @implementation DBIDetailRatingModel
 
 +(BOOL)propertyIsOptional:(NSString *)propertyName{

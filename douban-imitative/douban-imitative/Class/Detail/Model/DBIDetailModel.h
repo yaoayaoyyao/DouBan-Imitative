@@ -10,6 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DBIDetailDetailModel
+
+@end
+
 @protocol DBIDetailRatingModel
 
 @end
@@ -26,9 +30,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface DBIDetailDetailModel : JSONModel
+
+@property (nonatomic) int one;
+@property (nonatomic) int two;
+@property (nonatomic) int three;
+@property (nonatomic) int four;
+@property (nonatomic) int five;
+
+@end
+
 @interface DBIDetailRatingModel : JSONModel
 
 @property (nonatomic) float average;
+@property (nonatomic) DBIDetailDetailModel *details;
 
 @end
 
