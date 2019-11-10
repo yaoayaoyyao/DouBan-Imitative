@@ -30,6 +30,8 @@
 		9E868543235B964C0076894D /* stars_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E868540235B964C0076894D /* stars_empty.png */; };
 		9E868544235B964C0076894D /* stars_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E868541235B964C0076894D /* stars_full.png */; };
 		9E868545235B964C0076894D /* stars_half.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E868542235B964C0076894D /* stars_half.png */; };
+		9E897B9E237796670074B885 /* DBIDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E897B9D237796670074B885 /* DBIDetailModel.m */; };
+		9E897BA1237797340074B885 /* DBIDetailManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E897BA0237797340074B885 /* DBIDetailManager.m */; };
 		9E9FBAB5234DF1C600492F63 /* begin_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9E9FBAB4234DF1C600492F63 /* begin_1.jpg */; };
 		9E9FBABD234DFD6800492F63 /* DBIOtherPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9FBABC234DFD6800492F63 /* DBIOtherPageViewController.m */; };
 		9E9FBAC1234DFE8100492F63 /* shouye_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E9FBAC0234DFE8100492F63 /* shouye_selected.png */; };
@@ -119,6 +121,10 @@
 		9E868540235B964C0076894D /* stars_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_empty.png; sourceTree = "<group>"; };
 		9E868541235B964C0076894D /* stars_full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_full.png; sourceTree = "<group>"; };
 		9E868542235B964C0076894D /* stars_half.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars_half.png; sourceTree = "<group>"; };
+		9E897B9C237796670074B885 /* DBIDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBIDetailModel.h; sourceTree = "<group>"; };
+		9E897B9D237796670074B885 /* DBIDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBIDetailModel.m; sourceTree = "<group>"; };
+		9E897B9F237797340074B885 /* DBIDetailManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBIDetailManager.h; sourceTree = "<group>"; };
+		9E897BA0237797340074B885 /* DBIDetailManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBIDetailManager.m; sourceTree = "<group>"; };
 		9E9FBAB4234DF1C600492F63 /* begin_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = begin_1.jpg; sourceTree = "<group>"; };
 		9E9FBABB234DFD6800492F63 /* DBIOtherPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBIOtherPageViewController.h; sourceTree = "<group>"; };
 		9E9FBABC234DFD6800492F63 /* DBIOtherPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBIOtherPageViewController.m; sourceTree = "<group>"; };
@@ -422,6 +428,8 @@
 		9EA42EF7236E4A3F00911EE0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9E897B9C237796670074B885 /* DBIDetailModel.h */,
+				9E897B9D237796670074B885 /* DBIDetailModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -484,6 +492,8 @@
 				9ECD587D236331B400AEDA9F /* DBIHomePageManager.m */,
 				9EA42EEE236E1F5600911EE0 /* DBIListPageManager.h */,
 				9EA42EEF236E1F5600911EE0 /* DBIListPageManager.m */,
+				9E897B9F237797340074B885 /* DBIDetailManager.h */,
+				9E897BA0237797340074B885 /* DBIDetailManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -705,6 +715,7 @@
 				9E076D332375A01500DED048 /* DBIDetailHeadView.m in Sources */,
 				9EB67049234DE6F800B7C3FB /* main.m in Sources */,
 				9E10153C2367271700E9C205 /* DBIHomeWillModel.m in Sources */,
+				9E897BA1237797340074B885 /* DBIDetailManager.m in Sources */,
 				9ECD5881236332D800AEDA9F /* DBIHomeModel.m in Sources */,
 				9E30CD4223534A1E0062D0DD /* DBIHomeHotView.m in Sources */,
 				9E25D0642359E7C5001CAD33 /* DBIListViewController.m in Sources */,
@@ -717,6 +728,7 @@
 				9E868531235B41610076894D /* DBIHomeWillView.m in Sources */,
 				9ECD587E236331B400AEDA9F /* DBIHomePageManager.m in Sources */,
 				9EA42EFE236E4A9B00911EE0 /* DBIDetailView.m in Sources */,
+				9E897B9E237796670074B885 /* DBIDetailModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

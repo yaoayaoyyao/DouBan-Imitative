@@ -102,7 +102,7 @@
     _fiveProgressView.layer.masksToBounds = YES;
     
     [_fourProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.fiveProgressView.mas_bottom);
+        make.top.equalTo(self.fiveProgressView.mas_bottom).offset(2);
         make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
         make.width.equalTo(@(165));
         make.height.equalTo(@(6));
@@ -115,7 +115,7 @@
     _fourProgressView.layer.masksToBounds = YES;
     
     [_threeProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.fourProgressView.mas_bottom);
+        make.top.equalTo(self.fourProgressView.mas_bottom).offset(2);
         make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
         make.width.equalTo(@(165));
         make.height.equalTo(@(6));
@@ -128,7 +128,7 @@
     _threeProgressView.layer.masksToBounds = YES;
     
     [_twoProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.threeProgressView.mas_bottom);
+        make.top.equalTo(self.threeProgressView.mas_bottom).offset(2);
         make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
         make.width.equalTo(@(165));
         make.height.equalTo(@(6));
@@ -141,7 +141,7 @@
     _twoProgressView.layer.masksToBounds = YES;
     
     [_oneProgressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.twoProgressView.mas_bottom);
+        make.top.equalTo(self.twoProgressView.mas_bottom).offset(2);
         make.left.equalTo(self.numberScoreLabel.mas_right).offset(55);
         make.width.equalTo(@(165));
         make.height.equalTo(@(6));
