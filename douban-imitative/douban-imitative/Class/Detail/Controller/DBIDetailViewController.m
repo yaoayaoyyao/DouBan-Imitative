@@ -40,7 +40,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollDown) name:@"scrollDown" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollUp) name:@"scrollUp" object:nil];
-    
+    [self detailNetWork];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -98,6 +98,15 @@
         self.headView.alpha = 0;
     }];
     self.navigationController.navigationBar.clipsToBounds = YES;
+}
+
+- (void)detailNetWork {
+    [[DBIDetailManager sharedManager] hotDetailNetworkWithID:_ID Success:^(DBIDetailModel * _Nonnull listHotIDModel) {
+//        _detailView.titleDetailView.titleImageView.image = _movieImage;
+//        _detailView.titleDetailView.nameTitleLabel.text = 
+    } error:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 /*

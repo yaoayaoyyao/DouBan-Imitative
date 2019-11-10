@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBIDetailView.h"
 #import "DBIDetailHeadView.h"
+#import "DBIDetailManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

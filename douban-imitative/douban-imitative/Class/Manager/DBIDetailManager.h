@@ -17,6 +17,8 @@ typedef void(^ErrorHandle)(NSError *error);
 
 @interface DBIDetailManager : NSObject
 
++ (instancetype)sharedManager;
+
 - (void)hotDetailNetworkWithID:(NSString *)ID Success:(DBIDetailHandel)succeedBlock error:(ErrorHandle)errorBlock;
 
 @end
